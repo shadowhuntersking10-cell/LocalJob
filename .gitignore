@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Local data & secrets
+.env
+*.sqlite3
+*.db
+uploads/
+
+# Node / frontend
+web/node_modules/
+web/dist/
+npm-debug.log*
+.DS_Store
+
+# Editors
+.idea/
+.vscode/
+
+# TypeScript build cache
+*.tsbuildinfo

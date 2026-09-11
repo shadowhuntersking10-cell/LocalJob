@@ -1,0 +1,9 @@
+# LocalJob backend (Python 3.10+)
+fastapi>=0.110
+uvicorn[standard]>=0.27
+sqlalchemy>=2.0
+pymysql>=1.1
+aiogram>=3.7
+python-dotenv>=1.0
+pydantic>=2.6
+email-validator>=2.1

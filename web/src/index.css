@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── LocalJob design tokens · deep blue (primary) + sky blue (accent) ── */
+    --bg: 246 249 253;
+    --bg-soft: 238 244 252;
+    --card: 255 255 255;
+    --card-2: 248 251 255;
+    --line: 222 232 245;
+    --line-strong: 203 216 235;
+    --fg: 15 23 42;
+    --muted: 90 106 133;
+    --subtle: 129 145 172;
+
+    --primary: 29 78 216;
+    --primary-hover: 23 63 179;
+    --primary-soft: 226 236 255;
+    --primary-fg: 255 255 255;
+
+    --accent: 14 165 233;
+    --accent-soft: 224 242 254;
+    --accent-fg: 6 58 84;
+
+    --success: 16 145 105;
+    --warning: 202 138 4;
+    --danger: 220 38 50;
+    --info: 37 99 235;
+
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -18px rgba(15, 23, 42, 0.35);
+    --shadow-pop: 0 12px 40px -12px rgba(15, 23, 42, 0.28);
+  }
+
+  [data-theme='dark'] {
+    --bg: 8 14 28;
+    --bg-soft: 11 19 36;
+    --card: 15 23 42;
+    --card-2: 18 28 50;
+    --line: 30 42 68;
+    --line-strong: 45 61 94;
+    --fg: 229 236 248;
+    --muted: 148 164 194;
+    --subtle: 116 134 166;
+
+    --primary: 59 108 246;
+    --primary-hover: 88 133 250;
+    --primary-soft: 23 37 71;
+    --primary-fg: 255 255 255;
+
+    --accent: 56 189 248;
+    --accent-soft: 18 40 62;
+    --accent-fg: 219 242 255;
+
+    --success: 52 199 148;
+    --warning: 234 179 8;
+    --danger: 248 113 113;
+    --info: 96 165 250;
+
+    --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.02), 0 18px 40px -28px rgba(0, 0, 0, 0.9);
+    --shadow-pop: 0 24px 60px -24px rgba(0, 0, 0, 0.85);
+  }
+
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgb(var(--primary) / 0.25);
+  }
+
+  /* Scrollbars */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line-strong));
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .lj-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .lj-card {
+    @apply rounded-lg border border-line bg-card shadow-card;
+  }
+
+  .lj-input {
+    @apply h-11 w-full rounded-md border border-line bg-card px-3.5 text-sm text-fg placeholder:text-subtle
+      transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25 disabled:opacity-60;
+  }
+
+  .lj-label {
+    @apply mb-1.5 block text-sm font-medium text-fg;
+  }
+
+  .lj-link {
+    @apply text-primary underline-offset-4 transition-colors hover:text-primary-hover hover:underline;
+  }
+
+  .lj-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-card-2 px-3 py-1.5 text-xs font-medium text-muted;
+  }
+
+  .lj-skeleton {
+    @apply relative overflow-hidden rounded-md bg-card-2;
+  }
+  .lj-skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite];
+    background-image: linear-gradient(90deg, transparent, rgb(var(--line) / 0.65), transparent);
+  }
+
+  .lj-scroll-x {
+    @apply flex gap-2 overflow-x-auto pb-1;
+    scrollbar-width: none;
+  }
+  .lj-scroll-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lj-prose p {
+    @apply mb-3 leading-relaxed text-muted;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

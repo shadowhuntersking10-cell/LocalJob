@@ -23,3 +23,6 @@ npm-debug.log*
 
 # TypeScript build cache
 *.tsbuildinfo
+
+# SSR smoke-test build output
+web/dist-ssr/
